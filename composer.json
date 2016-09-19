@@ -1,0 +1,42 @@
+{
+  "repositories": [
+    { "type": "composer", "url": "https://composer.typo3.org/" }
+  ],
+  "name": "chriwo/typo3-distribution",
+  "description" : "TYPO3 CMS Distribution",
+  "license": "GPL-2.0+",
+  "require": {
+    "typo3/cms": "^6.2",
+
+    "typo3/cms-belog": "^6.2",
+    "typo3/cms-beuser": "^6.2",
+    "typo3/cms-context-help": "^6.2",
+    "typo3/cms-felogin": "^6.2",
+    "typo3/cms-filelist": "^6.2",
+    "typo3/cms-impexp": "^6.2",
+    "typo3/cms-info": "^6.2",
+    "typo3/cms-info-pagetsconfig": "^6.2",
+    "typo3/cms-lowlevel": "^6.2",
+    "typo3/cms-reports": "^6.2",
+    "typo3/cms-rsaauth": "^6.2",
+    "typo3/cms-rtehtmlarea": "^6.2",
+    "typo3/cms-setup": "^6.2",
+    "typo3/cms-tstemplate": "^6.2",
+    "typo3/cms-viewpage": "^6.2",
+
+    "symfony/process": "~2.7.0"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^4.8.0",
+    "mikey179/vfsStream": "^1.6.0"
+  },
+  "extra": {
+    "typo3/cms": {
+      "cms-package-dir": "{$vendor-dir}/typo3/cms",
+      "web-dir": "web"
+    }
+  },
+  "config": {
+    "bin-dir": "."
+  }
+}

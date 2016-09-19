@@ -1,0 +1,31 @@
+.idea/
+nbproject/
+.DS_Store
+.DS_Store?
+/vendor/*
+/bin
+/typo3cms
+/.env
+msi.iws
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+.svn
+.sass-cache
+
+/web/typo3conf/*
+# /web/typo3conf/LocalConfiguration.php
+!/web/typo3conf/AdditionalConfiguration.php
+!/web/typo3conf/ext
+!/web/typo3conf/l10n
+/web/typo3conf/ext/*
+# !/web/typo3conf/ext/<your_site_package>
+
+/web/FIRST_INSTALL
+/web/fileadmin
+/web/uploads
+/web/typo3temp
+/web/typo3
+/web/index.php
