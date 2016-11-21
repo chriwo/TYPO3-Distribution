@@ -1,0 +1,7 @@
+# global settings
+name:
+email:
+notifications: true
+logging: true
+maxlogs: 30
+ssh_needs_tty: false

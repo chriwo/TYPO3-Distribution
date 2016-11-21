@@ -1,5 +1,5 @@
-.idea/
-nbproject/
+/.idea
+/nbproject
 .DS_Store
 .DS_Store?
 /vendor/*
@@ -16,7 +16,7 @@ Thumbs.db
 .sass-cache
 
 /web/typo3conf/*
-# /web/typo3conf/LocalConfiguration.php
+!/web/typo3conf/LocalConfiguration.php
 !/web/typo3conf/AdditionalConfiguration.php
 !/web/typo3conf/ext
 !/web/typo3conf/l10n
