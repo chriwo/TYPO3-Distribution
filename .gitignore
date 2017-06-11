@@ -9,6 +9,7 @@
 !/var/cache/.gitkeep
 /bin
 /typo3cms
+/phpunit
 /.env
 msi.iws
 ._*
@@ -19,6 +20,8 @@ Thumbs.db
 .svn
 .sass-cache
 
+/Build/Deployment/vendor
+/Build/Deployment/composer.lock
 /web/typo3conf/*
 !/web/typo3conf/LocalConfiguration.php
 !/web/typo3conf/AdditionalConfiguration.php
