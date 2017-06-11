@@ -1,7 +1,15 @@
 <?php
 
 return [
+    'DB' => [
+        'database' => '',
+        'host' => '',
+        'password' => '',
+        'port' => 3306,
+        'username' => ''
+    ],
     'SYS' => [
+        'sitename' => '[Staging]',
         'displayErrors' => false,
         'devIPmask' => '',
         'sqlDebug' => false,
@@ -18,6 +26,6 @@ return [
         'debug' => false
     ],
     'HTTP' => [
-        'adapter' => 'curl',
+        'adapter' => 'curl'
     ]
 ];

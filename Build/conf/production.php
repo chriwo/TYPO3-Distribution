@@ -1,7 +1,15 @@
 <?php
 
 return [
+    'DB' => [
+        'database' => '',
+        'host' => '',
+        'password' => '',
+        'port' => 3306,
+        'username' => '',
+    ],
     'SYS' => [
+        'sitename' => '[Produktiv]',
         'displayErrors' => false,
         'devIPmask' => '',
         'sqlDebug' => false,
@@ -16,6 +24,16 @@ return [
     ],
     'FE' => [
         'debug' => false
+    ],
+    'GFX' => [
+        'colorspace' => 'RGB',
+        'im' => '1',
+        'im_mask_temp_ext_gif' => '1',
+        'im_path' => '/usr/bin/',
+        'im_path_lzw' => '/usr/bin/',
+        'im_v5effects' => '0',
+        'im_version_5' => 'im6',
+        'image_processing' => '1'
     ],
     'HTTP' => [
         'adapter' => 'curl',

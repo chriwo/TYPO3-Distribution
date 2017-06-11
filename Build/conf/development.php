@@ -1,6 +1,13 @@
 <?php
 
 return [
+    'DB' => [
+        'database' => '',
+        'host' => '',
+        'password' => '',
+        'port' => 3306,
+        'username' => '',
+    ],
     'SYS' => [
         'sitename' => '[Development]',
         'displayErrors' => true,
@@ -36,6 +43,6 @@ return [
     ],
     'MAIL' => [
         'transport' => 'mbox',
-        'transport_mbox_file' => dirname(PATH_site) . '/var_log/send-mails.log'
+        'transport_mbox_file' => dirname(PATH_site) . '/../var/mailbox/mail_' . time() . '.box'
     ]
 ];
