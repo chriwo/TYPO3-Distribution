@@ -30,7 +30,6 @@ class ConfigLoaderFactory
                 [
                     $rootDir . '/web/typo3conf/LocalConfiguration.php',
                     $rootDir . '/web/typo3conf/AdditionalConfiguration.php',
-                    $rootDir . '/.env',
                     $confDir . '/default.php',
                     $confDir . '/' . $context . '.php',
                     $confDir . '/override.php',
@@ -40,8 +39,7 @@ class ConfigLoaderFactory
             $cacheIdentifier = self::getCacheIdentifier($context, $fileWatches);
         }
 
-        return new \Helhum\ConfigLoader\CachedConfigurationLoader
-        (
+        return new \Helhum\ConfigLoader\CachedConfigurationLoader(
             $cacheDir,
             $cacheIdentifier,
             function() use ($confDir, $context) {
