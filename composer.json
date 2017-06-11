@@ -24,7 +24,8 @@
     "typo3/cms-setup": "^7.6",
     "typo3/cms-tstemplate": "^7.6",
     "typo3/cms-viewpage": "^7.6",
-    "helhum/typo3-console": "^4.6"
+    "helhum/typo3-console": "^4.6",
+    "helhum/config-loader": "^0.3.0"
   },
   "require-dev": {
     "phpunit/phpunit": "^4.8.0",
