@@ -3,6 +3,10 @@
 .DS_Store
 .DS_Store?
 /vendor/*
+/var/log/*
+!/var/log/.gitkeep
+/var/cache/*
+!/var/cache/.gitkeep
 /bin
 /typo3cms
 /.env
