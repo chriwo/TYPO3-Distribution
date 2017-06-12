@@ -41,7 +41,7 @@ $application = new \ChriWo\Distribution\Deployment\Application\DistributionAppli
     DEPLOYMENT_PATH,
     DEPLOYMENT_HOST
 );
-$application->setContext('Development');
+$application->setContext('Production/Staging');
 $application->setOption('username', SSH_USER);
 $application->setOption('phpBinaryPathAndFilename', PHP_BINARY);
 $application->setOption('keepReleases', MAX_RELEASES);
