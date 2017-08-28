@@ -19,8 +19,8 @@ class ConfigLoaderFactory
         $fixedCacheIdentifier = null,
         array $additionalFileWatches = []
     ) {
-        $confDir = $rootDir . '/conf';
-        $cacheDir = $rootDir . '/var/cache';
+        $confDir = $rootDir . '/shared/conf';
+        $cacheDir = $rootDir . '/build/cache';
 
         if ($fixedCacheIdentifier) {
             // Freeze configuration with fixed identifier if requested
