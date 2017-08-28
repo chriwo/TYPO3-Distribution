@@ -19,14 +19,15 @@ automate this steps.
 5. `./typo3cms install:setup`
 6. `./typo3cms configuration:remove DB`
 7. `git add . && git commit -m "After Install"`
-8. Set the database connection in the file(s) under /Build/conf/
-9. `ssh <server-alias> 'mkdir -p <path>/shared/conf && cd <path>/shared/Data && pwd'`
-10. `scp /Build/conf/* <server-alias>:<path>/shared/conf`
-11. `cd ./Build/Deployment && composer install`
-12. `git add . && git commit -m'Deployment config'`
-13. Edit the files under `Build/Deployment/.surf/`
-14. `cd Build/Deployment`
-15. `DEPLOYMENT_SOURCE=branch:master ./vendor/bin/surf deploy development`
+8. Set the database connection in the file(s) under /shared/conf/
+9. Set own INSTALL TOOL password. The default is `jho316-kasper`
+10. `ssh <server-alias> 'mkdir -p <path>/shared/conf && cd <path>/shared/Data && pwd'`
+11. `scp /shared/conf/* <server-alias>:<path>/shared/conf`
+12. `cd ./build/Deployment && composer install`
+13. `git add . && git commit -m 'Deployment config'`
+14. Edit the files under `build/Deployment/.surf/`
+15. `cd build/Deployment`
+16. `DEPLOYMENT_SOURCE=branch:master ./vendor/bin/surf deploy development`
 
 ### After first deploy
 
