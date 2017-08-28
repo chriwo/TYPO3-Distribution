@@ -20,8 +20,8 @@ Thumbs.db
 .svn
 .sass-cache
 
-/Build/Deployment/vendor
-/Build/Deployment/composer.lock
+/build/Deployment/vendor
+/build/Deployment/composer.lock
 /web/typo3conf/*
 !/web/typo3conf/LocalConfiguration.php
 !/web/typo3conf/AdditionalConfiguration.php
