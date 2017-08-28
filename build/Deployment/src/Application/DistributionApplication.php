@@ -75,7 +75,7 @@ class DistributionApplication extends \TYPO3\Surf\Application\TYPO3\CMS
                 '/.editorconfig',
                 '/.git',
                 '/.gitignore',
-                '/Build',
+                '/build',
                 '/build.xml',
                 '/web/composer.json',
                 '/web/composer.lock',
@@ -89,8 +89,8 @@ class DistributionApplication extends \TYPO3\Surf\Application\TYPO3\CMS
         // settings in the "AdditionalConfiguration".
         $this->setSymlinks(
             [
-                $this->getOption('applicationRootDirectory') . '/fileadmin' => '../../../shared/Data/fileadmin',
-                $this->getOption('applicationRootDirectory') . '/uploads' => '../../../shared/Data/uploads',
+                $this->getOption('applicationRootDirectory') . '/fileadmin' => '../../../shared/data/fileadmin',
+                $this->getOption('applicationRootDirectory') . '/uploads' => '../../../shared/data/uploads',
                 'conf' => '../../shared/conf'
             ]
         );
