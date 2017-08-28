@@ -2,11 +2,17 @@
 
 return [
     'DB' => [
-        'database' => '',
-        'host' => '',
-        'password' => '',
-        'port' => 3306,
-        'username' => '',
+        'Connections' => [
+            'Default' => [
+                'charset' => 'utf8',
+                'dbname' => '',
+                'driver' => 'mysqli',
+                'host' => '',
+                'password' => '',
+                'port' => 3306,
+                'user' => ''
+            ]
+        ]
     ],
     'SYS' => [
         'sitename' => '[Produktiv]',
