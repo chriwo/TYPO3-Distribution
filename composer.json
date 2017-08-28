@@ -42,6 +42,15 @@
     }
   },
   "scripts": {
+    "post-install-cmd": [
+      "rm -rf web/fileadmin && cd web && ln -s ../shared/Data/fileadmin fileadmin",
+      "rm -rf web/uploads && cd web && ln -s ../shared/Data/uploads uploads",
+      "rm -f web/index.php && cp vendor/typo3/cms/index.php web/index.php",
+      "cp vendor/typo3/cms/_.htaccess web/.htaccess"
+    ],
+    "post-update-cmd": [
+      "rm -f web/index.php && cp vendor/typo3/cms/index.php web/index.php"
+    ],
     "package-states": [
       "@php typo3cms install:generatepackagestates"
     ],
