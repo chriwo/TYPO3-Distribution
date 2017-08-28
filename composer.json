@@ -5,6 +5,7 @@
   "name": "chriwo/typo3-distribution",
   "description" : "TYPO3 CMS Distribution with console and magallanes support",
   "license": "GPL-2.0+",
+  "version": "1.0.0",
   "require": {
     "typo3/cms": "^7.6",
 
