@@ -26,6 +26,7 @@ return [
         'curlUse' => '1'
     ],
     'BE' => [
+        'installToolPassword' => '$pbkdf2-sha256$25000$kR85CoSl03Po3npugWfv6g$hzf6R5cZjfWfqDOgUUXckGrNQmcj.2l0coPvV9z8jt8',
         'debug' => true,
         'sessionTimeout' => 60 * 60 * 24 * 365
     ],
@@ -49,6 +50,6 @@ return [
     ],
     'MAIL' => [
         'transport' => 'mbox',
-        'transport_mbox_file' => dirname(PATH_site) . '/../var/mailbox/mail_' . time() . '.box'
+        'transport_mbox_file' => dirname(PATH_site) . '/../build/mailbox/mail_' . time() . '.box'
     ]
 ];

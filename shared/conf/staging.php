@@ -26,6 +26,7 @@ return [
         'curlUse' => '1'
     ],
     'BE' => [
+        'installToolPassword' => '$pbkdf2-sha256$25000$kR85CoSl03Po3npugWfv6g$hzf6R5cZjfWfqDOgUUXckGrNQmcj.2l0coPvV9z8jt8',
         'debug' => false
     ],
     'FE' => [
