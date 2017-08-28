@@ -10,7 +10,7 @@ const MAX_RELEASES = 5;
  * mittwald: php_cli
  * domain_factory: /usr/local/bin/php5-56STABLE-CLI or /usr/local/bin/php7-70STABLE-CLI
  */
-const PHP_BINARY = '';
+const PHP_REMOTE_BINARY = '';
 
 /**
  * define the absulute path on server to deploy
@@ -43,7 +43,7 @@ $application = new \ChriWo\Distribution\Deployment\Application\DistributionAppli
 );
 $application->setContext('Production/Staging');
 $application->setOption('username', SSH_USER);
-$application->setOption('phpBinaryPathAndFilename', PHP_BINARY);
+$application->setOption('phpBinaryPathAndFilename', PHP_REMOTE_BINARY);
 $application->setOption('keepReleases', MAX_RELEASES);
 $application->setOption('repositoryUrl', REPOSITORY);
 $application->addNode($node);
