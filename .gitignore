@@ -17,6 +17,7 @@ Thumbs.db
 
 /build/*
 !/build/cache/.gitkeep
+!/build/deployment
 !/build/hosting
 !/build/log/.gitkeep
 !/build/mailbox/.gitkeep
