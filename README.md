@@ -20,7 +20,7 @@ automate this steps.
 6. `./typo3cms configuration:remove DB`
 7. `git add . && git commit -m "After Install"`
 8. Set the database connection in the file(s) under /shared/conf/
-9. Set own INSTALL TOOL password. The default is `jho316-kasper`
+9. Set own INSTALL TOOL password. The default is `joh316-kasper`
 10. `ssh <server-alias> 'mkdir -p <path>/shared/conf && cd <path>/shared/Data && pwd'`
 11. `scp /shared/conf/* <server-alias>:<path>/shared/conf`
 12. `cd ./build/Deployment && composer install`
