@@ -23,22 +23,38 @@ automate this steps.
 9. Set own INSTALL TOOL password. The default is `joh316-kasper`
 10. `ssh <server-alias> 'mkdir -p <path>/shared/conf && cd <path>/shared/Data && pwd'`
 11. `scp /shared/conf/* <server-alias>:<path>/shared/conf`
-12. `cd ./build/Deployment && composer install`
-13. `git add . && git commit -m 'Deployment config'`
-14. Edit the files under `build/Deployment/.surf/`
-15. `cd build/Deployment`
-16. `DEPLOYMENT_SOURCE=branch:master ./vendor/bin/surf deploy development`
+
+### <a name="remoteDeploy"></a>Preparing for Surf to deploy on a remote server
+1. `ssh <deploy-server-alias> 'mkdir -p ~/.surf/deployment && cd ~.surf/deployment && pwd'`
+2. Edit the files under `build/deployment/ExampleConfigurationConfig.php`
+3. `scp /build/deployment/ExampleDeploymentConfig.php <deploy-server-alias>:~/.surf/deployment/<CustomerName>.php`
+
+#### Deploy with Surf
+1. Log into your deployment server via SSH
+2. Deploy with `DEPLOYMENT_SOURCE:tag=1.0.0 surf deploy <CustomerName>`
+
+*You could also use the your deployment with `describe` or `simulate`instead of `deploy`*
+
+### <a name="localDeploy"></a>Preparing for Surf to deploy from local
+1. Edit the files under `build/deployment/ExampleDeploymentConfig.php`
+2. `cp <local-path>/build/deployment/ExampleDeploymentConfig.php ~/.surf/deployment/<CustomerName>.php
+
+#### Deploy with Surf
+1. `DEPLOYMENT_SOURCE:tag=1.0.0 surf deploy <CustomerName>`
+
+*You could also use the your deployment with `describe` or `simulate`instead of `deploy`*
 
 ### After first deploy
 
 1. Create your on project package as TYPO3 extension under `web/typo3conf/ext/<project-package>`
-2. In the gitignore file enable line 31 and rename `<your_site_package>` with your project package name
+2. In the gitignore file enable line 33 and rename `<your_site_package>` with your project package name and remove the `#`
 3. `git add . && git commit -m'After creation of project package'`
 
 ### How to deploy to other server
 
-Now your project is ready to deploy it to an staging or production server you must repeat the steps 9 and 10, 14 and 15.
-In step 15 you use `staging` or `production` instead of `development`.
+Now your project is ready to deploy to an staging or production server you must repeat the steps for 
+[deploy from remote server](#remoteDeploy) or [deploy from local machine](#localDeploy). Instated of `<CustomerName>` you
+could use `CustomerNameProduction`.
 
 ### Thanks
 
