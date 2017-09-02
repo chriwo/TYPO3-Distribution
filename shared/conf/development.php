@@ -21,9 +21,7 @@ return [
         'sqlDebug' => true,
         'enableDeprecationLog' => 'file',
         'exceptionalErrors' => E_WARNING | E_USER_ERROR | E_RECOVERABLE_ERROR | E_DEPRECATED | E_USER_DEPRECATED,
-        'systemLogLevel' => 0,
-        'clearCacheSystem' => '1',
-        'curlUse' => '1'
+        'systemLogLevel' => 0
     ],
     'BE' => [
         'installToolPassword' => '$pbkdf2-sha256$25000$kR85CoSl03Po3npugWfv6g$hzf6R5cZjfWfqDOgUUXckGrNQmcj.2l0coPvV9z8jt8',
@@ -45,11 +43,8 @@ return [
         'image_processing' => '1',
         'jpg_quality' => '90',
     ],
-    'HTTP' => [
-        'adapter' => 'curl',
-    ],
     'MAIL' => [
         'transport' => 'mbox',
-        'transport_mbox_file' => dirname(PATH_site) . '/../build/mailbox/mail_' . time() . '.box'
+        'transport_mbox_file' => dirname(PATH_site) . '/build/mailbox/mail_' . time() . '.box'
     ]
 ];

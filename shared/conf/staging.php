@@ -21,9 +21,7 @@ return [
         'sqlDebug' => false,
         'enableDeprecationLog' => '',
         'exceptionalErrors' => E_WARNING | E_USER_ERROR | E_RECOVERABLE_ERROR | E_DEPRECATED | E_USER_DEPRECATED,
-        'systemLogLevel' => 0,
-        'clearCacheSystem' => '1',
-        'curlUse' => '1'
+        'systemLogLevel' => 0
     ],
     'BE' => [
         'installToolPassword' => '$pbkdf2-sha256$25000$kR85CoSl03Po3npugWfv6g$hzf6R5cZjfWfqDOgUUXckGrNQmcj.2l0coPvV9z8jt8',
@@ -31,8 +29,5 @@ return [
     ],
     'FE' => [
         'debug' => false
-    ],
-    'HTTP' => [
-        'adapter' => 'curl'
     ]
 ];

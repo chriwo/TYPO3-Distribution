@@ -11,7 +11,10 @@ return [
         'loginSecurityLevel' => 'rsa'
     ],
     'SYS' => [
-        'phpTimeZone' => 'Europe/Berlin'
+        'phpTimeZone' => 'Europe/Berlin',
+        'ddmmyy' => 'd.m.Y',
+        'curlUse' => '1',
+        'clearCacheSystem' => '1'
     ],
     'EXTCONF' => [
         'lang' => [
@@ -19,5 +22,8 @@ return [
                 'de'
             ]
         ]
+    ],
+    'HTTP' => [
+        'adapter' => 'curl'
     ]
 ];
