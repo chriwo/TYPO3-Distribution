@@ -19,7 +19,7 @@ class ConfigLoaderFactory
         $fixedCacheIdentifier = null,
         array $additionalFileWatches = []
     ) {
-        $confDir = $rootDir . '/shared/conf';
+        $confDir = $rootDir . '/conf';
         $cacheDir = $rootDir . '/build/cache';
 
         if ($fixedCacheIdentifier) {
