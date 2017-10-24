@@ -52,10 +52,10 @@
       "rm -f web/index.php && cp vendor/typo3/cms/index.php web/index.php"
     ],
     "package-states": [
-      "@php typo3cms install:generatepackagestates"
+      "@php vendor/helhum/typo3-console/Scripts/typo3cms install:generatepackagestates"
     ],
     "folder-structure": [
-      "@php typo3cms install:fixfolderstructure"
+      "@php vendor/helhum/typo3-console/Scripts/typo3cms install:fixfolderstructure"
     ],
     "pre-deploy": [
       "# Scripts here will be executed by Surf after composer install"
