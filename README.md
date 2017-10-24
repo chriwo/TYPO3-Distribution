@@ -31,16 +31,16 @@ automate this steps.
 
 #### Deploy with Surf
 1. Log into your deployment server via SSH
-2. Deploy with `DEPLOYMENT_SOURCE:tag=1.0.0 surf deploy <CustomerName>`
+2. Deploy with `DEPLOYMENT_SOURCE=tag:1.0.0 surf deploy <CustomerName>`
 
 *You could also use the your deployment with `describe` or `simulate`instead of `deploy`*
 
 ### <a name="localDeploy"></a>Preparing for Surf to deploy from local
 1. Edit the files under `build/deployment/ExampleDeploymentConfig.php`
-2. `cp <local-path>/build/deployment/ExampleDeploymentConfig.php ~/.surf/deployment/<CustomerName>.php
+2. `cp <local-path>/build/deployment/ExampleDeploymentConfig.php ~/.surf/deployment/<CustomerName>.php`
 
 #### Deploy with Surf
-1. `DEPLOYMENT_SOURCE:tag=1.0.0 surf deploy <CustomerName>`
+1. `DEPLOYMENT_SOURCE=tag:1.0.0 surf deploy <CustomerName>`
 
 *You could also use the your deployment with `describe` or `simulate`instead of `deploy`*
 
