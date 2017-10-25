@@ -11,7 +11,7 @@ const CUSTOMER = '';
 const INITIAL_DEPLOYMENT = false;
 
 /**
- * Production, Development, Staging
+ * Production, Production/Staging, Development, Testing
  */
 const DEPLOYMENT_CONTEXT = '';
 
