@@ -117,13 +117,7 @@ $application->setOption(
 
 setOptionDeploymentSource($application);
 
-$application->setSymlinks(
-    [
-        $application->getOption('applicationRootDirectory') . '/fileadmin' => '../../../shared/Data/fileadmin',
-        $application->getOption('applicationRootDirectory') . '/uploads' => '../../../shared/Data/uploads',
-        'conf' => '../../shared/conf'
-    ]
-);
+$application->setSymlinks(['conf' => '../../shared/conf']);
 $application->addNode($node);
 
 /** @var \TYPO3\Surf\Domain\Model\Deployment $deployment */
