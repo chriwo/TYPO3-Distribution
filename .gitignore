@@ -17,6 +17,7 @@ Thumbs.db
 
 /build/*
 !/build/cache/.gitkeep
+!/build/cronjobs
 !/build/deployment
 !/build/hosting
 !/build/log/.gitkeep
