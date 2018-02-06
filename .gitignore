@@ -30,12 +30,13 @@ Thumbs.db
 
 /web/typo3conf/*
 !/web/typo3conf/LocalConfiguration.php
-!/web/typo3conf/AdditionalConfiguration.php
+/web/typo3conf/AdditionalConfiguration.php
 /web/typo3conf/ext/*
 # !/web/typo3conf/ext/<your_site_package>
 
 /web/FIRST_INSTALL
 /web/index.php
+/web/.htaccess
 /web/fileadmin
 /web/uploads
 /web/typo3temp

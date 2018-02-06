@@ -36,6 +36,7 @@ const MAX_RELEASES = 5;
  *
  * mittwald: php_cli (PHP Version of domain)
  * domain_factory: /usr/local/bin/php5-56STABLE-CLI or /usr/local/bin/php7-70STABLE-CLI
+ * jweiland: /usr/local/bin/php5-56STABLE-CLI or /usr/local/bin/php7-70STABLE-CLI
  * all-inkl: php (PHP Version of domain)
  * metanet: /opt/php70/bin/php
  */
@@ -49,7 +50,7 @@ const PHP_LOCAL_BINARY = '';
 
 /**
  * define the absolute path on server to deploy
- * if you don't know the path create an php file on deployment server with "echo __FILE__;"
+ * if you don't know the path, change to the release path and "pwd" on shell
  */
 const DEPLOYMENT_PATH = '';
 
@@ -81,6 +82,15 @@ const SSH_USER = '';
  */
 const COMPOSER_PATH = '';
 
+/*************************************************************************************************
+ *
+ * !!! Don't change the next lines or now what you do !!!
+ *
+ *************************************************************************************************/
+
+$context = str_replace('/', '-', strtolower(DEPLOYMENT_CONTEXT));
+$buildDeploymentPath = '{releasePath}/build/deployment/' . $context . '/';
+
 $node = new \TYPO3\Surf\Domain\Model\Node(CUSTOMER);
 $node->setHostname(DEPLOYMENT_HOST);
 
@@ -103,7 +113,6 @@ $application->setOption(
         '/.editorconfig',
         '/.git',
         '/.gitignore',
-        '/build/deployment',
         '/build.xml',
         '/shared',
         '/composer.json',
@@ -195,46 +204,48 @@ if ($deployment->getOption('initialDeployment') === false) {
  */
 $workflow->addTask('TYPO3\\Surf\\Task\\TYPO3\\CMS\\CompareDatabaseTask', 'migrate');
 
-if ($deployment->getOption('context') === 'Development') {
-    /**
-     * Create task to remove the symlink of index.php file and get an copy from vendor directory
-     */
-    $workflow->defineTask(
-        'manageIndexFile',
-        \TYPO3\Surf\Task\ShellTask::class,
-        ['command' => 'rm -f {releasePath}/web/index.php && cp {releasePath}/vendor/typo3/cms/index.php {releasePath}/web/index.php']
-    );
-
-    /**
-     * Remove and copy a hosting specified htaccess from shared directory
-     */
-    $workflow->defineTask(
-        'copyHtaccess',
-        \TYPO3\Surf\Task\ShellTask::class,
-        ['command' => 'cp {sharedPath}/_.htaccess_development {releasePath}/web/.htaccess']
-    );
-
-    /**
-     * Remove and copy a hosting specified AdditionalConfiguration
-     */
-    $workflow->defineTask(
-        'copyAdditionalConfiguration',
-        \TYPO3\Surf\Task\ShellTask::class,
-        ['command' => 'rm -f {releasePath}/web/typo3conf/AdditionalConfiguration.php && cp {sharedPath}/_AdditionalConfiguration_development.php {releasePath}/web/typo3conf/AdditionalConfiguration.php']
-    );
-}
-
-$workflow->afterStage(
-    'transfer',
-    ['fixAccessRights']
+/**
+ * Create task to remove the symlink of index.php file and get an copy from vendor directory
+ */
+$workflow->defineTask(
+    'manageIndexFile',
+    \TYPO3\Surf\Task\ShellTask::class,
+    ['command' => 'cp -f {releasePath}/vendor/typo3/cms/index.php {releasePath}/web/index.php']
 );
 
-if ($deployment->getOption('initialDeployment') === false) {
-    $workflow->afterStage(
+/**
+ * Remove and copy a hosting specified htaccess from shared directory
+ */
+$workflow->defineTask(
+    'replaceHtaccess',
+    \TYPO3\Surf\Task\ShellTask::class,
+    ['command' => 'cp -f ' . $buildDeploymentPath . '.htaccess {releasePath}/web/.htaccess']
+);
+
+/**
+ * Remove and copy a htpasswd file.
+ */
+//$workflow->defineTask(
+//    'replaceHtpasswd',
+//    \TYPO3\Surf\Task\ShellTask::class,
+//    ['command' => 'cp -f ' . $buildDeploymentPath . '.htpasswd {releasePath}/web/typo3conf/.htpasswd']
+//);
+
+/**
+ * Remove and copy a hosting specified AdditionalConfiguration
+ */
+$workflow->defineTask(
+    'replaceAdditionalConfiguration',
+    \TYPO3\Surf\Task\ShellTask::class,
+    ['command' => 'cp -f ' . $buildDeploymentPath . 'AdditionalConfiguration.php {releasePath}/web/typo3conf/AdditionalConfiguration.php']
+);
+
+$workflow
+    ->afterStage('transfer', ['fixAccessRights'])
+    ->afterStage(
         'transfer',
-        ['fixFolderStructure', 'manageIndexFile', 'copyHtaccess', 'copyAdditionalConfiguration']
+        ['fixFolderStructure', 'manageIndexFile', 'replaceHtaccess', 'replaceAdditionalConfiguration'] //'replaceHtpasswd'
     );
-}
 
 $deployment->setWorkflow($workflow);
 

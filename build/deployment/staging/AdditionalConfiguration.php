@@ -1,8 +1,14 @@
 <?php
 
-$context = strtolower(\TYPO3\CMS\Core\Utility\GeneralUtility::getApplicationContext());
+$allowedContext = [
+    'production' => 'production',
+    'production/staging' => 'staging',
+    'development' => 'development'
+];
+
+$context = 'production/staging';
 $configLoader = \ChriWo\TYPO3\Distribution\ConfigLoaderFactory::buildLoader(
-    'development',
+    $allowedContext[$context],
     $rootDir = dirname(dirname(__DIR__)),
     $fixedCacheIdentifier = getenv('CONFIGURATION_CACHE_IDENTIFIER')
 );
