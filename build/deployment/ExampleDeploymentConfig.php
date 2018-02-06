@@ -27,6 +27,16 @@ const DEPLOYMENT_CONTEXT = '';
 const DATABASE_COMPARE = '*.add';
 
 /**
+ * Define if you need a database backup
+ */
+const MAKE_DATABASE_BACKUP = false;
+
+/**
+ * Define exclude database tables
+ */
+const EXCLUDE_DATABASE_TABLES = 'fe_sessions,sys_history,sys_log';
+
+/**
  * define how many releases are available on deployment server
  */
 const MAX_RELEASES = 5;
@@ -173,16 +183,24 @@ if ($deployment->getOption('initialDeployment') === false) {
     ];
     $workflow->defineTask('lockBackend', 'TYPO3\\Surf\\Task\\ShellTask', $lockBackend);
     $workflow->addTask('lockBackend', 'migrate');
+}
 
+if (MAKE_DATABASE_BACKUP) {
     /**
      * Create database backup with TYPO3 console
      */
+    $excludeTables = '';
+    if (!empty(EXCLUDE_DATABASE_TABLES)) {
+        $excludeTables = '--exclude-tables ' . EXCLUDE_DATABASE_TABLES;
+    }
     $createDatabaseBackup = [
         'command' =>
-            PHP_REMOTE_BINARY . ' {currentPath}/vendor/bin/typo3cms database:export > {currentPath}/build/' . $context . '-database-backup.sql',
+            PHP_REMOTE_BINARY . ' {currentPath}/vendor/bin/typo3cms database:export '
+            . $excludeTables . ' > {currentPath}/build/' . $context . '-database-backup.sql',
         'rollbackCommand' =>
-            PHP_REMOTE_BINARY . ' {currentPath}/vendor/bin/typo3cms database:import < {currentPath}/build/' . $context . '-database-backup.sql &&
-        rm -f {currentPath}/build/' . $context . '-database-backup.sql'
+            PHP_REMOTE_BINARY . ' {currentPath}/vendor/bin/typo3cms database:import '
+            . '< {currentPath}/build/' . $context . '-database-backup.sql'
+            . '&& rm -f {currentPath}/build/' . $context . '-database-backup.sql'
     ];
     $workflow->defineTask('createDatabaseBackup', 'TYPO3\\Surf\\Task\\ShellTask', $createDatabaseBackup);
     $workflow->addTask('createDatabaseBackup', 'migrate');
