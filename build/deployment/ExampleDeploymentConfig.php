@@ -153,6 +153,14 @@ $fixAccessRights = [
 $workflow->defineTask('fixAccessRights', 'TYPO3\\Surf\\Task\\ShellTask', $fixAccessRights);
 
 /**
+ * Fix access rights for sh files
+ */
+$fixAccessRightsForSh = [
+    'command' => 'cd {releasePath}/build/cronjobs && find -type f -print0 | xargs -0 chmod 0750'
+];
+$workflow->defineTask('fixAccessRightsForSH', 'TYPO3\\Surf\\Task\\ShellTask', $fixAccessRightsForSh);
+
+/**
  * Fix folder structure with TYPO3 console
  */
 $fixFolderStructure = [
@@ -260,7 +268,7 @@ $workflow
     ->afterStage('transfer', ['fixAccessRights'])
     ->afterStage(
         'transfer',
-        ['fixFolderStructure', 'manageIndexFile', 'replaceHtaccess', 'replaceAdditionalConfiguration'] //'replaceHtpasswd'
+        ['fixFolderStructure', 'fixAccessRightsForSH', 'manageIndexFile', 'replaceHtaccess', 'replaceAdditionalConfiguration'] //'replaceHtpasswd'
     );
 
 $deployment->setWorkflow($workflow);
