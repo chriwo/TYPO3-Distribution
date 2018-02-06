@@ -159,10 +159,10 @@ $updateLanguage = [
 $workflow->defineTask('updateLanguage', 'TYPO3\\Surf\\Task\\ShellTask', $updateLanguage);
 $workflow->addTask('updateLanguage', 'finalize');
 
-/**
- * Lock TYPO3 backend with TYPO3 console
- */
 if ($deployment->getOption('initialDeployment') === false) {
+    /**
+     * Lock TYPO3 backend with TYPO3 console
+     */
     $lockBackend = [
         'command' =>
             PHP_REMOTE_BINARY . ' {releasePath}/vendor/bin/typo3cms backend:lock && ' .
@@ -173,6 +173,19 @@ if ($deployment->getOption('initialDeployment') === false) {
     ];
     $workflow->defineTask('lockBackend', 'TYPO3\\Surf\\Task\\ShellTask', $lockBackend);
     $workflow->addTask('lockBackend', 'migrate');
+
+    /**
+     * Create database backup with TYPO3 console
+     */
+    $createDatabaseBackup = [
+        'command' =>
+            PHP_REMOTE_BINARY . ' {currentPath}/vendor/bin/typo3cms database:export > {currentPath}/build/' . $context . '-database-backup.sql',
+        'rollbackCommand' =>
+            PHP_REMOTE_BINARY . ' {currentPath}/vendor/bin/typo3cms database:import < {currentPath}/build/' . $context . '-database-backup.sql &&
+        rm -f {currentPath}/build/' . $context . '-database-backup.sql'
+    ];
+    $workflow->defineTask('createDatabaseBackup', 'TYPO3\\Surf\\Task\\ShellTask', $createDatabaseBackup);
+    $workflow->addTask('createDatabaseBackup', 'migrate');
 }
 
 /**
@@ -183,21 +196,6 @@ $unlockBackend = [
 ];
 $workflow->defineTask('unlockBackend', 'TYPO3\\Surf\\Task\\ShellTask', $unlockBackend);
 $workflow->addTask('unlockBackend', 'cleanup');
-
-/**
- * Create database backup with TYPO3 console
- */
-if ($deployment->getOption('initialDeployment') === false) {
-    $createDatabaseBackup = [
-        'command' =>
-            PHP_REMOTE_BINARY . ' {currentPath}/vendor/bin/typo3cms database:export > {currentPath}/build/deploymentbackup.sql',
-        'rollbackCommand' =>
-            PHP_REMOTE_BINARY . ' {currentPath}/vendor/bin/typo3cms database:import < {currentPath}/build/deploymentbackup.sql &&
-        rm -f {currentPath}/build/deploymentbackup.sql'
-    ];
-    $workflow->defineTask('createDatabaseBackup', 'TYPO3\\Surf\\Task\\ShellTask', $createDatabaseBackup);
-    $workflow->addTask('createDatabaseBackup', 'migrate');
-}
 
 /**
  * Compare database
