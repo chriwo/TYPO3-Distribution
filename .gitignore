@@ -15,12 +15,12 @@ Thumbs.db
 .svn
 .sass-cache
 
-/build/*
+/build/cache/*
 !/build/cache/.gitkeep
 !/build/cronjobs
-!/build/deployment
-!/build/hosting
+/build/log/*
 !/build/log/.gitkeep
+/build/mailbox/*
 !/build/mailbox/.gitkeep
 !/build/patches
 
