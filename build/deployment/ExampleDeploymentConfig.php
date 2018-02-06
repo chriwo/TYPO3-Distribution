@@ -169,7 +169,7 @@ $updateLanguage = [
 $workflow->defineTask('updateLanguage', 'TYPO3\\Surf\\Task\\ShellTask', $updateLanguage);
 $workflow->addTask('updateLanguage', 'finalize');
 
-if ($deployment->getOption('initialDeployment') === false) {
+if (INITIAL_DEPLOYMENT === false) {
     /**
      * Lock TYPO3 backend with TYPO3 console
      */
