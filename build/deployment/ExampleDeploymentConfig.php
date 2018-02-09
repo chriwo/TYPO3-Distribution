@@ -271,6 +271,15 @@ $workflow->defineTask(
 #    ['command' => PHP_REMOTE_BINARY . ' {currentPath}/vendor/bin/typo3cms database:import < ' . $buildDeploymentPath . '/db-prepare.sql']
 #);
 
+/**
+ * Remove and copy RealUrl configuration
+ */
+#$workflow->defineTask(
+#    'addRealUrlConf',
+#    \TYPO3\Surf\Task\ShellTask::class,
+#    ['command' => 'rm -f {releasePath}/web/typo3conf/realurl_conf.php && cp -f ' . $buildDeploymentPath . 'realurl_conf.php {releasePath}/web/typo3conf/realurl_conf.php']
+#);
+
 $workflow
     ->afterStage(
         'transfer',
