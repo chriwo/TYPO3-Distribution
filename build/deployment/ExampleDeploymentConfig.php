@@ -234,7 +234,7 @@ $workflow->addTask('TYPO3\\Surf\\Task\\TYPO3\\CMS\\CompareDatabaseTask', 'migrat
 $workflow->defineTask(
     'manageIndexFile',
     \TYPO3\Surf\Task\ShellTask::class,
-    ['command' => 'cp -f {releasePath}/vendor/typo3/cms/index.php {releasePath}/web/index.php']
+    ['command' => 'rm -f {releasePath}/web/index.php && cp -f {releasePath}/vendor/typo3/cms/index.php {releasePath}/web/index.php']
 );
 
 /**
@@ -243,7 +243,7 @@ $workflow->defineTask(
 $workflow->defineTask(
     'replaceHtaccess',
     \TYPO3\Surf\Task\ShellTask::class,
-    ['command' => 'cp -f ' . $buildDeploymentPath . '.htaccess {releasePath}/web/.htaccess']
+    ['command' => 'rm -f {releasePath}/web/.htaccess && cp -f ' . $buildDeploymentPath . '.htaccess {releasePath}/web/.htaccess']
 );
 
 /**
@@ -252,7 +252,7 @@ $workflow->defineTask(
 //$workflow->defineTask(
 //    'replaceHtpasswd',
 //    \TYPO3\Surf\Task\ShellTask::class,
-//    ['command' => 'cp -f ' . $buildDeploymentPath . '.htpasswd {releasePath}/web/typo3conf/.htpasswd']
+//    ['command' => 'rm -f {releasePath}/web/typo3conf/.htpasswd && cp -f ' . $buildDeploymentPath . '.htpasswd {releasePath}/web/typo3conf/.htpasswd']
 //);
 
 /**
@@ -261,15 +261,15 @@ $workflow->defineTask(
 $workflow->defineTask(
     'replaceAdditionalConfiguration',
     \TYPO3\Surf\Task\ShellTask::class,
-    ['command' => 'cp -f ' . $buildDeploymentPath . 'AdditionalConfiguration.php {releasePath}/web/typo3conf/AdditionalConfiguration.php']
+    ['command' => 'rm -f {releasePath}/web/typo3conf/AdditionalConfiguration.php && cp -f ' . $buildDeploymentPath . 'AdditionalConfiguration.php {releasePath}/web/typo3conf/AdditionalConfiguration.php']
 );
 
 $workflow
-    ->afterStage('transfer', ['fixAccessRights'])
     ->afterStage(
         'transfer',
-        ['fixFolderStructure', 'fixAccessRightsForSH', 'manageIndexFile', 'replaceHtaccess', 'replaceAdditionalConfiguration'] //'replaceHtpasswd'
-    );
+        ['fixAccessRights', 'fixAccessRightsForSH', 'manageIndexFile', 'replaceHtaccess', 'replaceAdditionalConfiguration'] //'replaceHtpasswd'
+    )
+    ->afterStage('switch', ['fixFolderStructure']);
 
 $deployment->setWorkflow($workflow);
 
