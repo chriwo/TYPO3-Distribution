@@ -264,6 +264,13 @@ $workflow->defineTask(
     ['command' => 'rm -f {releasePath}/web/typo3conf/AdditionalConfiguration.php && cp -f ' . $buildDeploymentPath . 'AdditionalConfiguration.php {releasePath}/web/typo3conf/AdditionalConfiguration.php']
 );
 
+// Prepare database
+#$workflow->defineTask(
+#    'prepareDatabase',
+#    \TYPO3\Surf\Task\ShellTask::class,
+#    ['command' => PHP_REMOTE_BINARY . ' {currentPath}/vendor/bin/typo3cms database:import < ' . $buildDeploymentPath . '/db-prepare.sql']
+#);
+
 $workflow
     ->afterStage(
         'transfer',
