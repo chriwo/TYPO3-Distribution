@@ -268,7 +268,7 @@ $workflow->defineTask(
 #$workflow->defineTask(
 #    'prepareDatabase',
 #    \TYPO3\Surf\Task\ShellTask::class,
-#    ['command' => PHP_REMOTE_BINARY . ' {currentPath}/vendor/bin/typo3cms database:import < ' . $buildDeploymentPath . '/db-prepare.sql']
+#    ['command' => PHP_REMOTE_BINARY . ' {currentPath}/vendor/bin/typo3cms database:import < ' . $buildDeploymentPath . 'db-prepare.sql']
 #);
 
 /**
