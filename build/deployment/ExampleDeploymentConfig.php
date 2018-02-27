@@ -252,7 +252,7 @@ $workflow->defineTask(
 //$workflow->defineTask(
 //    'replaceHtpasswd',
 //    \TYPO3\Surf\Task\ShellTask::class,
-//    ['command' => 'rm -f {releasePath}/web/typo3conf/.htpasswd && cp -f ' . $buildDeploymentPath . '.htpasswd {releasePath}/web/typo3conf/.htpasswd']
+//    ['command' => 'rm -f {releasePath}/web/.htpasswd && cp -f ' . $buildDeploymentPath . '.htpasswd {releasePath}/web/.htpasswd']
 //);
 
 /**
