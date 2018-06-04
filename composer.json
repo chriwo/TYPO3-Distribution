@@ -7,8 +7,6 @@
   "license": "GPL-2.0+",
   "version": "2.0.0",
   "require": {
-    "typo3/cms": "^8.7",
-
     "typo3/cms-belog": "^8.7",
     "typo3/cms-beuser": "^8.7",
     "typo3/cms-context-help": "^8.7",
