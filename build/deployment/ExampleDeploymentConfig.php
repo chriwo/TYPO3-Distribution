@@ -124,6 +124,8 @@ $application->setOption(
         '/.git',
         '/.gitignore',
         '/build.xml',
+        '/build/package',
+        '/build/initialize',
         '/shared',
         '/composer.json',
         '/composer.lock',
