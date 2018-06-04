@@ -27,7 +27,7 @@
     "typo3/cms-viewpage": "^8.7",
     "typo3/cms-wizard-crpages": "^8.7",
     "typo3/cms-wizard-sortpages": "^8.7",
-    "helhum/typo3-console": "^5.0",
+    "helhum/typo3-console": "^4.9.3 || ^5.2",
     "helhum/config-loader": "^0.6"
   },
   "require-dev": {
