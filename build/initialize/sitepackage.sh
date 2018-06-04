@@ -24,6 +24,7 @@ then
    sed -i '' 's/'"$DUMMY_PROJECT_NAME"'/'"$i_projectname"'/g' $NEW_SITEPACKAGE_PATH/ext_emconf.php
    sed -i '' 's/'"$DUMMY_PROJECT_NAME"'/'"$i_projectname"'/g' $NEW_SITEPACKAGE_PATH/Configuration/TCA/Overrides/sys_template.php
    sed -i '' 's/'"$DUMMY_PROJECT_NAME"'/'"$i_projectname"'/g' $NEW_SITEPACKAGE_PATH/Readme.md
+   sed -i '' 's/'"$DUMMY_PROJECT_NAME"'/'"$i_projectname"'/g' $PROJECT_DIRECTORY/shared/conf/development-ddev.php
 
    # add sitepackage to .gitignore
    echo -e "\n!/web/typo3conf/ext/$i_extKey" >> $PROJECT_DIRECTORY/.gitignore
