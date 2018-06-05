@@ -6,6 +6,17 @@ DDEV_DIRECTORY="$PROJECT_DIRECTORY/.ddev/"
 
 pushd "${PROJECT_DIRECTORY}"
 
+# change access right of shell initialize shell scripts
+chmod 755 -R build/initialize/
+
+# install yarn packages global
+echo "Install node-sass and gulp-cli global"
+npm install --global node-sass
+npm install --global gulp-cli
+
+echo "Start npm install"
+npm install
+
 # handle SSH keys
 rm -rf /home/.ssh
 mkdir /home/.ssh

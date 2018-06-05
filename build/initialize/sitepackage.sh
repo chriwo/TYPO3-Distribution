@@ -19,6 +19,7 @@ then
    # replace extKey in files
    sed -i '' 's/'"$DUMMY_SITEPACKAGE"'/'"$i_extKey"'/g' $NEW_SITEPACKAGE_PATH/ext_emconf.php
    sed -i '' 's/'"$DUMMY_SITEPACKAGE"'/'"$i_extKey"'/g' $NEW_SITEPACKAGE_PATH/Configuration/TCA/Overrides/sys_template.php
+   sed -i '' 's/'"$DUMMY_SITEPACKAGE"'/'"$i_extKey"'/g' $PROJECT_DIRECTORY/gulp/config.js
 
    # replace "Customer" in files with project name
    sed -i '' 's/'"$DUMMY_PROJECT_NAME"'/'"$i_projectname"'/g' $NEW_SITEPACKAGE_PATH/ext_emconf.php
