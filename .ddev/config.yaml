@@ -11,6 +11,7 @@ additional_hostnames: []
 provider: default
 hooks:
   post-start:
+    - exec: chmod 755 -R /var/www/html/build/initialize/
     - exec: /var/www/html/build/initialize/project_ddev_startup.sh
 
 # This config.yaml was created with ddev version v0.19.0
