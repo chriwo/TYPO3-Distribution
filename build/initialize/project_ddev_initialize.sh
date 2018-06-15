@@ -26,6 +26,15 @@ done
 vendor/bin/typo3cms database:updateschema "*.add,*.change"
 vendor/bin/typo3cms extension:setupactive
 
+# active the next line, if you want to use typo3reversedeployment
+#vendor/bin/typo3reverse reverse_full
+
+echo "Import database dumps"
+cat web/fileadmin/database/*.sql | vendor/bin/typo3cms database:import
+cat build/deployment/development-ddev/*.sql | vendor/bin/typo3cms database:import
+
+rm -f web/fileadmin/database/*
+
 # Finished cache
 vendor/bin/typo3cms cache:flush
 
