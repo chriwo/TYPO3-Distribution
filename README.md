@@ -42,10 +42,6 @@ How? There are multiple ways to support the further development
 - **Patreon:** Support me on [patreon.com](https://www.patreon.com/chriwode).
 - **Amazon Wishlist:** Satisfy a wish of my [Amazon wishlist](https://www.amazon.de/hz/wishlist/ls/9O32AGLF1OUS). 
 
-## 5. Say thank you, if you like
-
-If you like this distribution
-
 [1]: https://ddev.readthedocs.io/en/latest/
 [2]: https://git-scm.com/downloads
 [3]: https://ddev.readthedocs.io/en/latest/users/cli-usage/
