@@ -6,30 +6,6 @@ DDEV_DIRECTORY="$PROJECT_DIRECTORY/.ddev/"
 
 pushd "${PROJECT_DIRECTORY}"
 
-# change access right of shell initialize shell scripts
-chmod 755 -R build/initialize/
-
-# install yarn packages global
-echo "Install node-sass and gulp-cli global"
-npm install --global node-sass
-npm install --global gulp-cli
-
-echo "Start npm install"
-npm install
-
-# handle SSH keys
-rm -rf /home/.ssh
-mkdir /home/.ssh
-
-if [ -f /tmp/.ssh/ddev.pub ]
-then
-    cp -f /tmp/.ssh/{ddev,ddev.pub,known_hosts} /home/.ssh/
-    mv /home/.ssh/ddev.pub /home/.ssh/id_rsa.pub && mv /home/.ssh/ddev /home/.ssh/id_rsa
-else
-    cp -f /tmp/.ssh/{id_rsa,id_rsa.pub,known_hosts} /home/.ssh/
-fi
-chmod 600 /home/.ssh/*
-
 # install dependencies
 composer install -d /var/www/html
 
@@ -49,6 +25,15 @@ done
 
 vendor/bin/typo3cms database:updateschema "*.add,*.change"
 vendor/bin/typo3cms extension:setupactive
+
+# active the next line, if you want to use typo3reversedeployment
+#vendor/bin/typo3reverse reverse_full
+
+echo "Import database dumps"
+cat web/fileadmin/database/*.sql | vendor/bin/typo3cms database:import
+cat build/deployment/development-ddev/*.sql | vendor/bin/typo3cms database:import
+
+rm -f web/fileadmin/database/*
 
 # Finished cache
 vendor/bin/typo3cms cache:flush

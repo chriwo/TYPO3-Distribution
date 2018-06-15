@@ -1,0 +1,40 @@
+<?php
+
+return [
+    'ssh-user' => '',
+    'ssh-server' => '',
+    'typo3-root' => '',
+    'php-binary' => '/usr/bin/php',
+    'file-source' => ['fileadmin', 'uploads'],
+    'file-target' => './web/',
+    'sql-target' => './web/fileadmin/database/',
+    'exclude-db-tables' => [
+        'sys_log',
+        'be_groups',
+        'be_sessions',
+        'be_users',
+        'fe_sessions',
+        'fe_groups',
+        'fe_users',
+        'sys_domain',
+        'sys_template',
+        'cache_md5params',
+        'cache_treelist',
+        'cf_cache_hash',
+        'cf_cache_hash_tags',
+        'cf_cache_imagesizes',
+        'cf_cache_imagesizes_tags',
+        'cf_cache_pages',
+        'cf_cache_pages_tags',
+        'cf_cache_pagesection',
+        'cf_cache_pagesection_tags',
+        'cf_cache_rootline',
+        'cf_cache_rootline_tags',
+        'cf_extbase_datamapfactory_datamap',
+        'cf_extbase_datamapfactory_datamap_tags',
+        'cf_extbase_object',
+        'cf_extbase_object_tags',
+        'cf_extbase_reflection',
+        'cf_extbase_reflection_tags'
+    ]
+];
