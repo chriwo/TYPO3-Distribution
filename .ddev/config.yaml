@@ -2,6 +2,7 @@ APIVersion: v0.19.0
 name: TYPO3-Distribution
 type: typo3
 docroot: web
+webimage: machbarsalzmann/nginx-php-fpm-local:1.3.0
 php_version: "7.1"
 router_http_port: "80"
 router_https_port: "443"
@@ -12,7 +13,7 @@ hooks:
   post-start:
     - exec: /var/www/html/build/initialize/project_ddev_startup.sh
 
-# This config.yaml was created with ddev version v0.19.0 
+# This config.yaml was created with ddev version v0.19.0
 # webimage: drud/nginx-php-fpm-local:v0.19.0
 # dbimage: drud/mariadb-local:v0.19.0
 # dbaimage: drud/phpmyadmin:v0.19.0
@@ -22,7 +23,7 @@ hooks:
 
 # Key features of ddev's config.yaml:
 
-# name: <projectname> # Name of the project, automatically provides 
+# name: <projectname> # Name of the project, automatically provides
 #   http://projectname.ddev.local and https://projectname.ddev.local
 
 # type: <projecttype>  # drupal6/7/8, backdrop, typo3, wordpress, php
@@ -31,12 +32,12 @@ hooks:
 
 # php_version: "7.1"  # PHP version to use, "5.6", "7.0", "7.1", "7.2"
 
-# You can explicitly specify the webimage, dbimage, dbaimage lines but this 
+# You can explicitly specify the webimage, dbimage, dbaimage lines but this
 # is not recommended, as the images are often closely tied to ddev's' behavior,
 # so this can break upgrades.
 
-# webimage: <docker_image>  # nginx/php docker image. 
-# dbimage: <docker_image>  # mariadb docker image. 
+# webimage: <docker_image>  # nginx/php docker image.
+# dbimage: <docker_image>  # mariadb docker image.
 # dbaimage: <docker_image>
 
 # router_http_port: <port>  # Port to be used for http (defaults to port 80)
