@@ -12,6 +12,7 @@ provider: default
 hooks:
   post-start:
     - exec: chmod 755 -R /var/www/html/build/initialize/
+    - exec: /var/www/html/build/initialize/project_ddev_ssh.sh
     - exec: /var/www/html/build/initialize/project_ddev_startup.sh
     - exec: /var/www/html/build/initialize/gulp_build.sh
 

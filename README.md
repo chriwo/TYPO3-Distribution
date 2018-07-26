@@ -21,14 +21,20 @@ distribution. Only a little manuel step are need to start with the new project.
 3. Open your console (shell) and got to your project folder
 4. Type `ddev start` to start ddev
 
-#### 3.1 Little tips with ddev
+#### 3.1 TYPO3 login data for local development
+
+* Username: `admin`
+* Password: `password`
+* Install-Tool: `joh316`
+
+#### 3.2 Little tips with ddev
 
 * start local development with `ddev start`
 * stop local development with `ddev stop`
 * destory docker container with `ddev remove -R` (This command will destroy both the containers and the imported database contents.)
 * for more information about ddev cli have a look into [Ddev - Using CLI][3]
 
-#### 3.2 Using typo3reverse
+#### 3.3 Using typo3reverse
 
 [typo3reverse][4] is a project to get all data (database and files) from a remote server. If you have an existing project
 setup the config-file under `/.reverse/`. And if you need an sync of database and file an ddev start, uncomment the line
