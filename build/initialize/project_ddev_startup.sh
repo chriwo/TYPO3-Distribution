@@ -1,8 +1,5 @@
 #!/bin/bash
 
-# set ssh keys
-/var/www/html/build/initialize/project_ddev_ssh.sh
-
 if [ ! -e /var/www/html/build/initialized ]
 then
     echo -e "\033[1;33m -- Initializing -- \033[0m"
