@@ -6,7 +6,7 @@ distribution. Only a little manuel step are need to start with the new project.
 ## 1. Requirement of your local machine
 
 * Windows 10 Pro, macOs Sierra or higher, Linux
-* [ddev][1] version 0.19.0 or higher
+* [ddev][1] version 1.3 or higher
 * [Git][2]
 
 ## 2. Preparations
