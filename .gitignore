@@ -15,8 +15,6 @@ Thumbs.db
 .svn
 .sass-cache
 
-/.ddev/sequelpro.spf
-
 /build/cache/*
 !/build/cache/.gitkeep
 !/build/cronjobs
