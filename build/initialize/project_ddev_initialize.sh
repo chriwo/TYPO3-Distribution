@@ -12,6 +12,13 @@ composer install -d /var/www/html
 # add local development configuration
 rm -f web/.htaccess && cp build/deployment/development-ddev/.htaccess web/.htaccess
 rm -f web/typo3conf/AdditionalConfiguration.php && cp build/deployment/development-ddev/AdditionalConfiguration.php web/typo3conf/AdditionalConfiguration.php
+rm -f web/typo3conf/realurl_conf.php
+
+# copy realurl configuration if exist
+if [ -f /var/www/html/build/deployment/development-ddev/realurl_conf.php ]
+then
+   cp build/deployment/development-ddev/realurl_conf.php web/typo3conf/realurl_conf.php
+fi
 
 vendor/bin/typo3cms install:fixfolderstructure
 vendor/bin/typo3cms install:generatepackagestates
