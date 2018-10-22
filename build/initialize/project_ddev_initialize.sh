@@ -10,7 +10,7 @@ pushd "${PROJECT_DIRECTORY}"
 composer install -d /var/www/html
 
 # add local development configuration
-rm -f web/.htaccess && cp build/deployment/development-ddev/.htaccess web/typo3conf/.htaccess
+rm -f web/.htaccess && cp build/deployment/development-ddev/.htaccess web/.htaccess
 rm -f web/typo3conf/AdditionalConfiguration.php && cp build/deployment/development-ddev/AdditionalConfiguration.php web/typo3conf/AdditionalConfiguration.php
 
 vendor/bin/typo3cms install:fixfolderstructure
