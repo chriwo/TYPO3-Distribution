@@ -37,7 +37,6 @@ Thumbs.db
 !/web/typo3conf/LocalConfiguration.php
 /web/typo3conf/AdditionalConfiguration.php
 !/web/typo3conf/ext
-!/web/typo3conf/l10n
 /web/typo3conf/ext/*
 # !/web/typo3conf/ext/<your_site_package>
 
