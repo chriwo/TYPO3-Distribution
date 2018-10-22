@@ -1,24 +1,27 @@
-APIVersion: v0.19.0
+APIVersion: v1.3.0
 name: TYPO3-Distribution
 type: typo3
 docroot: web
-webimage: machbarsalzmann/nginx-php-fpm-local:1.3.0
 php_version: "7.1"
+webserver_type: nginx-fpm
+webimage: drud/ddev-webserver:20181017_add_ssh
 router_http_port: "80"
 router_https_port: "443"
 xdebug_enabled: false
 additional_hostnames: []
+additional_fqdns: []
 provider: default
 hooks:
   post-start:
-    - exec: chmod 755 -R /var/www/html/build/initialize/
-    - exec: /var/www/html/build/initialize/project_ddev_ssh.sh
-    - exec: /var/www/html/build/initialize/project_ddev_startup.sh
+  - exec: chmod 755 -R /var/www/html/build/initialize/
+  - exec: /var/www/html/build/initialize/project_ddev_ssh.sh
+  - exec: /var/www/html/build/initialize/project_ddev_startup.sh
 
-# This config.yaml was created with ddev version v0.19.0
-# webimage: drud/nginx-php-fpm-local:v0.19.0
-# dbimage: drud/mariadb-local:v0.19.0
-# dbaimage: drud/phpmyadmin:v0.19.0
+
+# This config.yaml was created with ddev version v1.3.0 
+# webimage: drud/ddev-webserver:v1.3.0
+# dbimage: drud/ddev-dbserver:v1.3.0
+# dbaimage: drud/phpmyadmin:v1.3.0
 # However we do not recommend explicitly wiring these images into the
 # config.yaml as they may break future versions of ddev.
 # You can update this config.yaml using 'ddev config'.
@@ -47,11 +50,22 @@ hooks:
 
 # xdebug_enabled: false  # Set to true to enable xdebug and "ddev start" or "ddev restart"
 
-#additional_hostnames:
-# - somename
-# - someothername
+# webserver_type: nginx-fpm  # Can be set to apache-fpm or apache-cgi as well
+
+# additional_hostnames:
+#  - somename
+#  - someothername
 # would provide http and https URLs for "somename.ddev.local"
 # and "someothername.ddev.local".
+
+# additional_fqdns:
+#  - example.com
+#  - sub1.example.com
+# would provide http and https URLs for "example.com" and "sub1.example.com"
+# Please take care with this because it can cause great confusion.
+
+# upload_dir: custom/upload/dir
+# would set the destination path for ddev import-files to custom/upload/dir.
 
 # provider: default # Currently either "default" or "pantheon"
 #
@@ -62,4 +76,4 @@ hooks:
 # for them. Example:
 #hooks:
 #  post-start:
-#    - exec: "composer install -d /var/www/html"
+#    - exec: composer install -d /var/www/html

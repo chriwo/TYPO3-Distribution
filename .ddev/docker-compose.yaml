@@ -1,4 +1,4 @@
-version: '3'
+version: '3.6'
 #ddev-generated
 services:
   db:
@@ -6,9 +6,17 @@ services:
     image: $DDEV_DBIMAGE
     stop_grace_period: 60s
     volumes:
-      - "${DDEV_IMPORTDIR}:/db"
-      - "${DDEV_DATADIR}:/var/lib/mysql"
-      - ".:/mnt/ddev_config"
+      - type: "volume"
+        source: mariadb-database
+        target: "/var/lib/mysql"
+        volume:
+          nocopy: true
+      - type: "bind"
+        source: "${DDEV_IMPORTDIR}"
+        target: "/db"
+      - type: "bind"
+        source: "."
+        target: "/mnt/ddev_config"
     restart: "no"
     user: "$DDEV_UID:$DDEV_GID"
     ports:
@@ -22,13 +30,15 @@ services:
     environment:
       - COLUMNS=$COLUMNS
       - LINES=$LINES
-
+    command: "$DDEV_MARIADB_LOCAL_COMMAND"
   web:
     container_name: ddev-${DDEV_SITENAME}-web
     image: $DDEV_WEBIMAGE
+    cap_add:
+      - SYS_PTRACE
     volumes:
       - "../:/var/www/html:cached"
-      - ".:/mnt/ddev_config"
+      - ".:/mnt/ddev_config:ro"
     restart: "no"
     user: "$DDEV_UID:$DDEV_GID"
     depends_on:
@@ -44,6 +54,7 @@ services:
       - DDEV_URL=$DDEV_URL
       - DOCROOT=$DDEV_DOCROOT
       - DDEV_PHP_VERSION=$DDEV_PHP_VERSION
+      - DDEV_WEBSERVER_TYPE=$DDEV_WEBSERVER_TYPE
       - DDEV_PROJECT_TYPE=$DDEV_PROJECT_TYPE
       - DDEV_ROUTER_HTTP_PORT=$DDEV_ROUTER_HTTP_PORT
       - DDEV_ROUTER_HTTPS_PORT=$DDEV_ROUTER_HTTPS_PORT
@@ -65,6 +76,9 @@ services:
       com.ddev.approot: $DDEV_APPROOT
       com.ddev.app-url: $DDEV_URL
     extra_hosts: ["unneeded:127.0.0.1"]
+    external_links:
+      - ddev-router:$DDEV_HOSTNAME
+
   dba:
     container_name: ddev-${DDEV_SITENAME}-dba
     image: $DDEV_DBAIMAGE
@@ -91,3 +105,7 @@ networks:
   default:
     external:
       name: ddev_default
+volumes:
+  mariadb-database:
+    name: "${DDEV_SITENAME}-mariadb"
+  

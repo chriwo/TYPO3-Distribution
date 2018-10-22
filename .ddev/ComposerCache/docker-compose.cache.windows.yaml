@@ -1,0 +1,5 @@
+version: '3.6'
+services:
+  web:
+    volumes:
+    - "$HOME/AppData/Local/Composer/cache:/home/.composer/cache"
