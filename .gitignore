@@ -23,6 +23,7 @@ Thumbs.db
 /build/mailbox/*
 !/build/mailbox/.gitkeep
 !/build/patches
+/build/initialized
 
 /shared/*
 !/shared/Data/fileadmin/.gitkeep
