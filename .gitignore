@@ -25,6 +25,8 @@ Thumbs.db
 !/build/patches
 /build/initialized
 
+/node_modules
+
 /shared/*
 !/shared/Data/fileadmin/.gitkeep
 !/shared/Data/uploads/.gitkeep
